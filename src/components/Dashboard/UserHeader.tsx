@@ -6,14 +6,18 @@ import EditProfileDialog from '../Profile/EditProfileDialog';
 import HelpDialog from './HelpDialog';
 import './UserHeader.css';
 
-interface UserHeaderProps {}
+interface UserHeaderProps {
+  user?: {
+    name: string;
+    avatar?: string;
+  };
+}
 
-const UserHeader: React.FC<UserHeaderProps> = () => {
+const UserHeader: React.FC<UserHeaderProps> = ({ user: initialUser }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showEditProfile, setShowEditProfile] = useState(false);
   const [userData, setUserData] = useState<{ name: string; avatar?: string } | null>(null);
   const { currentUser, logout } = useAuth();
-  const navigate = useNavigate();
   const defaultAvatar = '/assets/default-avatar.png';
   const [showHelpDialog, setShowHelpDialog] = useState(false);
 
@@ -25,14 +29,17 @@ const UserHeader: React.FC<UserHeaderProps> = () => {
         const data = await firestoreService.user.getUserProfile(currentUser.uid);
         if (data) {
           setUserData(data);
+        } else if (initialUser) {
+          setUserData(initialUser);
         }
       } catch (error) {
         console.error('Failed to load user data:', error);
+        if (initialUser) setUserData(initialUser);
       }
     };
 
     loadUserData();
-  }, [currentUser]);
+  }, [currentUser, initialUser]);
 
   const handleLogout = async () => {
     try {
