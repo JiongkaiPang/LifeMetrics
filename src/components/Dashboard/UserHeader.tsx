@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from '@tanstack/react-router';
 import { useAuth } from '../../contexts/FirebaseContext';
 import { firestoreService } from '../../services/firestore';
 import EditProfileDialog from '../Profile/EditProfileDialog';
