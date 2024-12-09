@@ -6,12 +6,13 @@ import { useAuth } from './contexts/FirebaseContext';
 const App: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
-  const [showHeader, setShowHeader] = useState(true);  // Set initial state to true
+  const [showHeader, setShowHeader] = useState(true);
 
   useEffect(() => {
     const path = window.location.pathname;
-    // Show header on home page and other non-dashboard pages when not logged in
-    const shouldShowHeader = (path === '/' || (path !== '/LifeMetrics/dashboard' && !currentUser));
+    // Adjust path checking to account for base path
+    const isDashboard = path.endsWith('/dashboard');
+    const shouldShowHeader = !isDashboard || !currentUser;
     setShowHeader(shouldShowHeader);
   }, [currentUser, router.state.location.pathname]);
 

@@ -59,7 +59,10 @@ const routeTree = rootRoute.addChildren([
   dashboardRoute,
 ])
 
-export const router = createRouter({ routeTree })
+export const router = createRouter({ routeTree,
+  basepath: '/LifeMetrics',  // Add this line
+  defaultPreload: 'intent',
+  defaultErrorComponent: () => <div>Page Not Found</div> })
 
 declare module '@tanstack/react-router' {
   interface Register {
