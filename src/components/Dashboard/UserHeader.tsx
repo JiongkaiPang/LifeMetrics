@@ -43,7 +43,7 @@ const UserHeader: React.FC<UserHeaderProps> = ({ user: initialUser }) => {
   const handleLogout = async () => {
     try {
       await logout();
-      window.location.href = '/'; // Force a full page reload
+      window.location.href = '/LifeMetrics/'; // Force a full page reload
     } catch (error) {
       console.error('Failed to log out:', error);
     }
