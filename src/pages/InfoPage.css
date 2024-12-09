@@ -1,0 +1,28 @@
+/* InfoPage.css */
+.info-page-container {
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #2c3e50;
+    text-align: left;
+  }
+  
+  .info-header {
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e63946; /* Adds a colored underline effect */
+    padding-bottom: 1rem;
+  }
+  
+  .info-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .info-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #4a4a4a;
+    font-family: 'Roboto', sans-serif;
+  }

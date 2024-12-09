@@ -1,0 +1,58 @@
+/* Home.css */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .background-video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  .home-content {
+    z-index: 1;
+    max-width: 800px;
+    width: 100%;
+    padding: 0 2rem;
+  }
+  
+  .home-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-family: 'Pacifico', cursive; /* Cursive font for title */
+  }
+  
+  .home-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .start-tracking-button {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+  }
+  
+  .start-tracking-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+  }

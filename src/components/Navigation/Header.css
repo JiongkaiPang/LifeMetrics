@@ -1,0 +1,87 @@
+/* Header.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.3rem 2.3rem; /* Increase top and bottom padding to make the header taller */
+    background: linear-gradient(90deg, #2c3e50, #4a5568);
+    color: #fff;
+    width: 100vw;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 100px; /* Adjusted logo size */
+    height: auto;
+    margin-right: 30px;
+}
+
+.brand-name {
+    font-size: 3rem;
+    font-family: 'Pacifico', cursive; /* Cursive font for a more elegant look */
+    color: #00e6e6;
+    font-weight: bold;
+}
+
+.header-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 90px; /* Adjusts the position of the navigation links */
+}
+
+.header-center nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.header-center nav a {
+    text-decoration: none;
+    color: #fff; /* Original color set to white */
+    font-size: 1.3rem;
+    font-style: italic; /* Italic style for navigation links */
+    transition: color 0.3s, transform 0.3s;
+}
+
+.header-center nav a:hover {
+    color: #00e6e6; /* Artistic hover color */
+    transform: scale(1.1); /* Slight enlargement on hover */
+}
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.sign-in-button {
+    background-color: #00b4d8;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 180, 216, 0.3);
+    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.sign-in-button:hover {
+    background-color: #0099cc;
+    transform: scale(1.1);
+    box-shadow: 0px 6px 12px rgba(0, 180, 216, 0.5);
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color for brand consistency */
+  }
