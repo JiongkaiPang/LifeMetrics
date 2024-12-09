@@ -22,7 +22,7 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ isOpen, onClose }) => {
       setError('');
       await login(email, password);
       onClose();
-      window.location.href = '/dashboard'; // Force a full page reload
+      window.location.href = '/LifeMetrics/dashboard'; // Force a full page reload
     } catch (err) {
       setError('Failed to sign in');
       console.error(err);

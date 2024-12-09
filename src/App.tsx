@@ -11,7 +11,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const path = window.location.pathname;
     // Show header on home page and other non-dashboard pages when not logged in
-    const shouldShowHeader = (path === '/' || (path !== '/dashboard' && !currentUser));
+    const shouldShowHeader = (path === '/' || (path !== '/LifeMetrics/dashboard' && !currentUser));
     setShowHeader(shouldShowHeader);
   }, [currentUser, router.state.location.pathname]);
 
