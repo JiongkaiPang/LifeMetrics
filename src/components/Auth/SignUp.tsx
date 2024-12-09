@@ -1,3 +1,4 @@
+// SignUp.tsx
 import React, { useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { useAuth } from '../../contexts/FirebaseContext';
@@ -34,8 +35,7 @@ const SignUp: React.FC = () => {
         });
       }
 
-      // Instead of using navigate, use window.location.href for a full page reload
-      window.location.href = '/LifeMetrics/dashboard';
+      navigate({ to: '/dashboard' });
     } catch (err) {
       setError('Failed to create an account');
       console.error(err);
