@@ -7,6 +7,9 @@ import SignUp from './components/Auth/SignUp'
 import Dashboard from './pages/Dashboard'
 import { auth } from './config/firebase'
 
+// Define the base path as a string constant at the top
+const BASE_PATH = '/LifeMetrics'
+
 // Create a root route
 const rootRoute = createRootRoute({
   component: App,
@@ -58,7 +61,12 @@ const routeTree = rootRoute.addChildren([
   dashboardRoute,
 ])
 
-export const router = createRouter({ routeTree })
+export const router = createRouter({ 
+  routeTree,
+  basepath: BASE_PATH,
+  defaultPreload: 'intent',
+  defaultErrorComponent: () => <div>Page Not Found</div>
+})
 
 declare module '@tanstack/react-router' {
   interface Register {
