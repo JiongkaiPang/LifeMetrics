@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { useAuth } from '../../contexts/FirebaseContext';
 import './LoginDialog.css';
 
@@ -13,6 +13,7 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ isOpen, onClose }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   if (!isOpen) return null;
 
@@ -22,7 +23,7 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ isOpen, onClose }) => {
       setError('');
       await login(email, password);
       onClose();
-      window.location.href = '/LifeMetrics/dashboard'; // Force a full page reload
+      navigate({ to: '/dashboard' });
     } catch (err) {
       setError('Failed to sign in');
       console.error(err);

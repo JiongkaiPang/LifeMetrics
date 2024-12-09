@@ -7,9 +7,6 @@ import SignUp from './components/Auth/SignUp'
 import Dashboard from './pages/Dashboard'
 import { auth } from './config/firebase'
 
-// Define the base path as a string constant at the top
-const BASE_PATH = '/LifeMetrics'
-
 // Create a root route
 const rootRoute = createRootRoute({
   component: App,
@@ -44,10 +41,11 @@ const dashboardRoute = createRoute({
   path: '/dashboard',
   component: Dashboard,
   beforeLoad: async () => {
-    // Check if user is authenticated
     if (!auth.currentUser) {
       throw redirect({
         to: '/',
+        search: {},
+        hash: ''
       })
     }
   },
@@ -61,12 +59,7 @@ const routeTree = rootRoute.addChildren([
   dashboardRoute,
 ])
 
-export const router = createRouter({ 
-  routeTree,
-  basepath: BASE_PATH,
-  defaultPreload: 'intent',
-  defaultErrorComponent: () => <div>Page Not Found</div>
-})
+export const router = createRouter({ routeTree })
 
 declare module '@tanstack/react-router' {
   interface Register {
