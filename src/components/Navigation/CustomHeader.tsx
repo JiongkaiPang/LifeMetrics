@@ -11,7 +11,7 @@ const CustomHeader: React.FC = () => {
       <header className="header">
         <div className="header-left">
           <RouterLink to="/" className="logo-link">
-            <img src="/logo.png" alt="LifeMetrics Logo" className="logo" />
+            <img src="/LifeMetrics/logo.png" alt="LifeMetrics Logo" className="logo" />
             <span className="brand-name">LifeMetrics</span>
           </RouterLink>
         </div>

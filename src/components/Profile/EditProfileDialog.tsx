@@ -12,10 +12,10 @@ interface EditProfileDialogProps {
 }
 
 const AVATAR_OPTIONS = [
-  '/assets/avatar-1.png',
-  '/assets/avatar-2.png',
-  '/assets/avatar-3.png',
-  '/assets/avatar-4.png'
+  '/LifeMetrics/assets/avatar-1.png',
+  '/LifeMetrics/assets/avatar-2.png',
+  '/LifeMetrics/assets/avatar-3.png',
+  '/LifeMetrics/assets/avatar-4.png'
 ];
 
 const EditProfileDialog: React.FC<EditProfileDialogProps> = ({

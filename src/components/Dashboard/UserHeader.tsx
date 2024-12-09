@@ -17,7 +17,7 @@ const UserHeader: React.FC<UserHeaderProps> = ({ user: initialUser }) => {
   const [showEditProfile, setShowEditProfile] = useState(false);
   const [userData, setUserData] = useState<{ name: string; avatar?: string } | null>(null);
   const { currentUser, logout } = useAuth();
-  const defaultAvatar = '/assets/default-avatar.png';
+  const defaultAvatar = '/LifeMetrics/assets/default-avatar.png';
   const [showHelpDialog, setShowHelpDialog] = useState(false);
 
   useEffect(() => {
