@@ -1,119 +1,119 @@
-.login-dialog-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .login-dialog {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .login-input-group {
-    margin-bottom: 1rem;
-  }
-  
-  .login-input-group input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 2px solid #e1e1e1;
-    border-radius: 25px;
-    font-size: 1rem;
-    outline: none;
-    transition: border-color 0.3s;
-  }
-  
-  .login-input-group input:focus {
-    border-color: #00b4d8;
-  }
-  
-  .forgot-password {
-    text-align: right;
-    margin-bottom: 1rem;
-  }
-  
-  .forgot-password a {
-    color: #666;
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
-  
-  .forgot-password a:hover {
-    color: #00b4d8;
-  }
-  
-  .login-button {
-    width: 100%;
-    padding: 0.8rem;
-    background-color: #00b4d8;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .login-button:hover {
-    background-color: #0099cc;
-  }
-  
-  .signup-link {
-    text-align: center;
-    margin-top: 1rem;
-  }
-  
-  .signup-link a {
-    color: #00b4d8;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .signup-link a:hover {
-    text-decoration: underline;
+.login-dialog-overlay { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 1000; 
   } 
-
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #666;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-  }
-  
-  .close-button:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    color: #000;
-  }
-  
-  /* Update the login-dialog class to include position: relative */
-  .login-dialog {
-    position: relative;
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-  }
+   
+  .login-dialog { 
+    background: white; 
+    padding: 2rem; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    width: 100%; 
+    max-width: 400px; 
+  } 
+   
+  .login-input-group { 
+    margin-bottom: 1rem; 
+  } 
+   
+  .login-input-group input { 
+    width: 100%; 
+    padding: 0.8rem; 
+    border: 2px solid #e1e1e1; 
+    border-radius: 25px; 
+    font-size: 1rem; 
+    outline: none; 
+    transition: border-color 0.3s; 
+  } 
+   
+  .login-input-group input:focus { 
+    border-color: #00b4d8; 
+  } 
+   
+  .forgot-password { 
+    text-align: right; 
+    margin-bottom: 1rem; 
+  } 
+   
+  .forgot-password a { 
+    color: #666; 
+    text-decoration: none; 
+    font-size: 0.9rem; 
+  } 
+   
+  .forgot-password a:hover { 
+    color: #00b4d8; 
+  } 
+   
+  .login-button { 
+    width: 100%; 
+    padding: 0.8rem; 
+    background-color: #00b4d8; 
+    color: white; 
+    border: none; 
+    border-radius: 25px; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+  } 
+   
+  .login-button:hover { 
+    background-color: #0099cc; 
+  } 
+   
+  .signup-link { 
+    text-align: center; 
+    margin-top: 1rem; 
+  } 
+   
+  .signup-link a { 
+    color: #00b4d8; 
+    text-decoration: none; 
+    font-weight: bold; 
+  } 
+   
+  .signup-link a:hover { 
+    text-decoration: underline; 
+  }  
+ 
+  .close-button { 
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    background: none; 
+    border: none; 
+    font-size: 24px; 
+    cursor: pointer; 
+    color: #666; 
+    width: 30px; 
+    height: 30px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 50%; 
+    transition: all 0.3s ease; 
+  } 
+   
+  .close-button:hover { 
+    background-color: rgba(0, 0, 0, 0.1); 
+    color: #000; 
+  } 
+   
+  /* Update the login-dialog class to include position: relative */ 
+  .login-dialog { 
+    position: relative; 
+    background: white; 
+    padding: 2rem; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    width: 100%; 
+    max-width: 400px; 
+  } 

@@ -1,114 +1,114 @@
-.status-form {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-top: 10px;
-  }
-  
-  .form-section {
-    margin-bottom: 20px;
-  }
-  
-  .form-section h4 {
-    color: #495057;
-    margin-bottom: 12px;
-    font-size: 1rem;
-    font-weight: 500;
-  }
-  
-  .form-group {
-    margin-bottom: 12px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #666;
-    font-size: 0.9em;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: border-color 0.2s;
-  }
-  
-  .form-group input:focus {
-    border-color: #00b4d8;
-    outline: none;
-  }
-  
-  .helper-text {
-    display: block;
-    color: #666;
-    font-size: 0.8em;
-    margin-top: 4px;
-    font-style: italic;
-  }
-  
-  .thresholds-group {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 15px;
-  }
-  
-  .threshold-row {
-    margin-bottom: 12px;
-  }
-  
-  .threshold-row:last-child {
-    margin-bottom: 0;
-  }
-  
-  .form-buttons {
-    display: flex;
-    gap: 8px;
-    margin-top: 20px;
-  }
-  
-  .form-buttons button {
-    flex: 1;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.2s;
-  }
-  
-  .form-buttons button[type="submit"] {
-    background-color: #00b4d8;
-    color: white;
-  }
-  
-  .form-buttons button[type="submit"]:hover:not(:disabled) {
-    background-color: #0099cc;
-  }
-  
-  .form-buttons button[type="button"] {
-    background-color: #e9ecef;
-    color: #495057;
-  }
-  
-  .form-buttons button[type="button"]:hover:not(:disabled) {
-    background-color: #dee2e6;
-  }
-  
-  .form-buttons button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
-  
-  .error-message {
-    background-color: #fee2e2;
-    color: #dc2626;
-    padding: 8px;
-    border-radius: 4px;
-    margin-bottom: 12px;
-    font-size: 14px;
+.status-form { 
+    background: white; 
+    padding: 15px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    margin-top: 10px; 
   } 
+   
+  .form-section { 
+    margin-bottom: 20px; 
+  } 
+   
+  .form-section h4 { 
+    color: #495057; 
+    margin-bottom: 12px; 
+    font-size: 1rem; 
+    font-weight: 500; 
+  } 
+   
+  .form-group { 
+    margin-bottom: 12px; 
+  } 
+   
+  .form-group label { 
+    display: block; 
+    margin-bottom: 5px; 
+    color: #666; 
+    font-size: 0.9em; 
+  } 
+   
+  .form-group input { 
+    width: 100%; 
+    padding: 8px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    font-size: 14px; 
+    transition: border-color 0.2s; 
+  } 
+   
+  .form-group input:focus { 
+    border-color: #00b4d8; 
+    outline: none; 
+  } 
+   
+  .helper-text { 
+    display: block; 
+    color: #666; 
+    font-size: 0.8em; 
+    margin-top: 4px; 
+    font-style: italic; 
+  } 
+   
+  .thresholds-group { 
+    background: #f8f9fa; 
+    padding: 15px; 
+    border-radius: 6px; 
+    margin-bottom: 15px; 
+  } 
+   
+  .threshold-row { 
+    margin-bottom: 12px; 
+  } 
+   
+  .threshold-row:last-child { 
+    margin-bottom: 0; 
+  } 
+   
+  .form-buttons { 
+    display: flex; 
+    gap: 8px; 
+    margin-top: 20px; 
+  } 
+   
+  .form-buttons button { 
+    flex: 1; 
+    padding: 8px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    transition: background-color 0.2s; 
+  } 
+   
+  .form-buttons button[type="submit"] { 
+    background-color: #00b4d8; 
+    color: white; 
+  } 
+   
+  .form-buttons button[type="submit"]:hover:not(:disabled) { 
+    background-color: #0099cc; 
+  } 
+   
+  .form-buttons button[type="button"] { 
+    background-color: #e9ecef; 
+    color: #495057; 
+  } 
+   
+  .form-buttons button[type="button"]:hover:not(:disabled) { 
+    background-color: #dee2e6; 
+  } 
+   
+  .form-buttons button:disabled { 
+    opacity: 0.7; 
+    cursor: not-allowed; 
+  } 
+   
+  .error-message { 
+    background-color: #fee2e2; 
+    color: #dc2626; 
+    padding: 8px; 
+    border-radius: 4px; 
+    margin-bottom: 12px; 
+    font-size: 14px; 
+  }  

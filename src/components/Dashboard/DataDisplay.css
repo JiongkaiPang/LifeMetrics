@@ -1,174 +1,174 @@
-.data-display {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  height: 100%;
-}
-
-.data-input-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.input-group {
-  display: flex;
-  gap: 15px;
-}
-
-.input-group input {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.visualization-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.charts-section {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  height: 300px; /* Fixed height */
-  margin-bottom: 20px; /* Add space between charts and records */
-}
-
-.chart-container {
-  flex: 1;
-  min-width: 300px;
-  height: 100%; /* Take full height of parent */
-  background: white;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-}
-
-.chart-container h4 {
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.chart-wrapper {
-  flex: 1;
-  position: relative;
-  width: 100%;
-  height: calc(100% - 30px); /* Subtract header height */
-  min-height: 200px;
-}
-
-.chart-placeholder {
-  height: 250px;
-  border: 1px dashed #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-}
-
-.numbers-section {
-  margin-top: 20px;
-  padding: 1rem;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: auto; /* Let it adjust to content */
-  min-height: 200px;
-}
-
-.numbers-section h4 {
-  margin: 0 0 1rem 0;
-  color: #212529;
-}
-
-.records-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  table-layout: fixed; /* Ensures the table fits horizontally */
-}
-
-.records-table th,
-.records-table td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-  overflow: hidden; /* Prevents overflow */
-  text-overflow: ellipsis; /* Adds ellipsis for overflowed text */
-  white-space: nowrap; /* Prevents text wrapping */
-}
-
-.records-table th {
-  background-color: #f8f9fa;
-  font-weight: 600;
-  color: #495057;
-}
-
-.records-table tr:last-child td {
-  border-bottom: none;
-}
-
-.records-table tr:hover {
-  background-color: #f8f9fa;
-}
-
-.delete-button {
-  padding: 6px 12px;
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.delete-button:hover {
-  background-color: #c82333;
-}
-
-.delete-button:disabled {
-  background-color: #e9ecef;
-  cursor: not-allowed;
-}
-
-.loading-cell,
-.empty-cell {
-  text-align: center;
-  padding: 20px;
-  color: #6c757d;
-}
-
-/* Style the save button */
-.input-group button {
-  padding: 8px 24px;
-  background-color: #00b4d8;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.2s;
-  min-width: 80px; /* Ensure consistent width */
-}
-
-.input-group button:hover:not(:disabled) {
-  background-color: #0099cc;
-}
-
-.input-group button:disabled {
-  background-color: #e9ecef;
-  cursor: not-allowed;
-  opacity: 0.7;
-}
+.data-display { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
+  height: 100%; 
+} 
+ 
+.data-input-section { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 10px; 
+} 
+ 
+.input-group { 
+  display: flex; 
+  gap: 15px; 
+} 
+ 
+.input-group input { 
+  padding: 8px; 
+  border: 1px solid #ddd; 
+  border-radius: 4px; 
+} 
+ 
+.visualization-section { 
+  flex: 1; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
+} 
+ 
+.charts-section { 
+  display: flex; 
+  gap: 20px; 
+  flex-wrap: wrap; 
+  height: 300px; /* Fixed height */ 
+  margin-bottom: 20px; /* Add space between charts and records */ 
+} 
+ 
+.chart-container { 
+  flex: 1; 
+  min-width: 300px; 
+  height: 100%; /* Take full height of parent */ 
+  background: white; 
+  border-radius: 8px; 
+  padding: 15px; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+  display: flex; 
+  flex-direction: column; 
+} 
+ 
+.chart-container h4 { 
+  margin-bottom: 10px; 
+  font-size: 1.1rem; 
+  color: #333; 
+} 
+ 
+.chart-wrapper { 
+  flex: 1; 
+  position: relative; 
+  width: 100%; 
+  height: calc(100% - 30px); /* Subtract header height */ 
+  min-height: 200px; 
+} 
+ 
+.chart-placeholder { 
+  height: 250px; 
+  border: 1px dashed #ddd; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  margin-top: 10px; 
+  border-radius: 4px; 
+  background-color: #f9f9f9; 
+} 
+ 
+.numbers-section { 
+  margin-top: 20px; 
+  padding: 1rem; 
+  background-color: white; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  height: auto; /* Let it adjust to content */ 
+  min-height: 200px; 
+} 
+ 
+.numbers-section h4 { 
+  margin: 0 0 1rem 0; 
+  color: #212529; 
+} 
+ 
+.records-table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  margin-top: 1rem; 
+  background-color: white; 
+  border-radius: 8px; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+  table-layout: fixed; /* Ensures the table fits horizontally */ 
+} 
+ 
+.records-table th, 
+.records-table td { 
+  padding: 12px; 
+  text-align: left; 
+  border-bottom: 1px solid #eee; 
+  overflow: hidden; /* Prevents overflow */ 
+  text-overflow: ellipsis; /* Adds ellipsis for overflowed text */ 
+  white-space: nowrap; /* Prevents text wrapping */ 
+} 
+ 
+.records-table th { 
+  background-color: #f8f9fa; 
+  font-weight: 600; 
+  color: #495057; 
+} 
+ 
+.records-table tr:last-child td { 
+  border-bottom: none; 
+} 
+ 
+.records-table tr:hover { 
+  background-color: #f8f9fa; 
+} 
+ 
+.delete-button { 
+  padding: 6px 12px; 
+  background-color: #dc3545; 
+  color: white; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  transition: background-color 0.2s; 
+} 
+ 
+.delete-button:hover { 
+  background-color: #c82333; 
+} 
+ 
+.delete-button:disabled { 
+  background-color: #e9ecef; 
+  cursor: not-allowed; 
+} 
+ 
+.loading-cell, 
+.empty-cell { 
+  text-align: center; 
+  padding: 20px; 
+  color: #6c757d; 
+} 
+ 
+/* Style the save button */ 
+.input-group button { 
+  padding: 8px 24px; 
+  background-color: #00b4d8; 
+  color: white; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  font-size: 14px; 
+  font-weight: 500; 
+  transition: background-color 0.2s; 
+  min-width: 80px; /* Ensure consistent width */ 
+} 
+ 
+.input-group button:hover:not(:disabled) { 
+  background-color: #0099cc; 
+} 
+ 
+.input-group button:disabled { 
+  background-color: #e9ecef; 
+  cursor: not-allowed; 
+  opacity: 0.7; 
+} 
