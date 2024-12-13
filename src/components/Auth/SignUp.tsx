@@ -1,46 +1,93 @@
 // SignUp.tsx
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { useAuth } from '../../contexts/FirebaseContext';
 import { firestoreService } from '../../services/firestore';
 import './SignUp.css';
 
+// Define action types
+type FormAction = 
+  | { type: 'SET_EMAIL'; payload: string }
+  | { type: 'SET_PASSWORD'; payload: string }
+  | { type: 'SET_CONFIRM_PASSWORD'; payload: string }
+  | { type: 'SET_USERNAME'; payload: string }
+  | { type: 'SET_ERROR'; payload: string }
+  | { type: 'CLEAR_ERROR' }
+  | { type: 'SET_LOADING'; payload: boolean };
+
+// Define state interface
+interface FormState {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  username: string;
+  error: string;
+  loading: boolean;
+}
+
+// Initial state
+const initialState: FormState = {
+  email: '',
+  password: '',
+  confirmPassword: '',
+  username: '',
+  error: '',
+  loading: false,
+};
+
+// Reducer function
+const formReducer = (state: FormState, action: FormAction): FormState => {
+  switch (action.type) {
+    case 'SET_EMAIL':
+      return { ...state, email: action.payload };
+    case 'SET_PASSWORD':
+      return { ...state, password: action.payload };
+    case 'SET_CONFIRM_PASSWORD':
+      return { ...state, confirmPassword: action.payload };
+    case 'SET_USERNAME':
+      return { ...state, username: action.payload };
+    case 'SET_ERROR':
+      return { ...state, error: action.payload };
+    case 'CLEAR_ERROR':
+      return { ...state, error: '' };
+    case 'SET_LOADING':
+      return { ...state, loading: action.payload };
+    default:
+      return state;
+  }
+};
+
 const SignUp: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [username, setUsername] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  
+  const [state, dispatch] = useReducer(formReducer, initialState);
   const { signup } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      return setError('Passwords do not match');
+    if (state.password !== state.confirmPassword) {
+      return dispatch({ type: 'SET_ERROR', payload: 'Passwords do not match' });
     }
 
     try {
-      setError('');
-      setLoading(true);
-      const userCredential = await signup(email, password);
+      dispatch({ type: 'CLEAR_ERROR' });
+      dispatch({ type: 'SET_LOADING', payload: true });
+      
+      const userCredential = await signup(state.email, state.password);
       
       if (userCredential.user) {
         await firestoreService.user.createUserProfile(userCredential.user.uid, {
-          email,
-          name: username,
+          email: state.email,
+          name: state.username,
         });
       }
 
       navigate({ to: '/dashboard' });
     } catch (err) {
-      setError('Failed to create an account');
+      dispatch({ type: 'SET_ERROR', payload: 'Failed to create an account' });
       console.error(err);
     } finally {
-      setLoading(false);
+      dispatch({ type: 'SET_LOADING', payload: false });
     }
   };
 
@@ -53,15 +100,15 @@ const SignUp: React.FC = () => {
     <div className="signup-container">
       <div className="signup-card">
         <h2>Create Account</h2>
-        {error && <div className="error-message">{error}</div>}
+        {state.error && <div className="error-message">{state.error}</div>}
         <form onSubmit={handleSubmit} className="signup-form">
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input
               id="username"
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={state.username}
+              onChange={(e) => dispatch({ type: 'SET_USERNAME', payload: e.target.value })}
               required
               placeholder="Enter your username"
             />
@@ -72,8 +119,8 @@ const SignUp: React.FC = () => {
             <input
               id="email"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={state.email}
+              onChange={(e) => dispatch({ type: 'SET_EMAIL', payload: e.target.value })}
               required
               placeholder="Enter your email"
             />
@@ -84,8 +131,8 @@ const SignUp: React.FC = () => {
             <input
               id="password"
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={state.password}
+              onChange={(e) => dispatch({ type: 'SET_PASSWORD', payload: e.target.value })}
               required
               placeholder="Create a password"
             />
@@ -96,8 +143,8 @@ const SignUp: React.FC = () => {
             <input
               id="confirm-password"
               type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={state.confirmPassword}
+              onChange={(e) => dispatch({ type: 'SET_CONFIRM_PASSWORD', payload: e.target.value })}
               required
               placeholder="Confirm your password"
             />
@@ -106,9 +153,9 @@ const SignUp: React.FC = () => {
           <button 
             type="submit" 
             className="signup-button" 
-            disabled={loading}
+            disabled={state.loading}
           >
-            {loading ? 'Creating Account...' : 'Sign Up'}
+            {state.loading ? 'Creating Account...' : 'Sign Up'}
           </button>
 
           <div className="login-link">

@@ -112,3 +112,13 @@
     margin-bottom: 12px;
     font-size: 14px;
   } 
+
+  .error-message {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  
+  .form-group input.error {
+    border-color: #dc2626;
+  }

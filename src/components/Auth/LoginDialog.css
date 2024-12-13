@@ -117,3 +117,19 @@
     width: 100%;
     max-width: 400px;
   }
+
+  .error-message {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  
+  .login-input-group input.error {
+    border-color: #dc2626;
+  }
+  
+  .login-input-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }

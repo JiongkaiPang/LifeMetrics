@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { StatusThresholds, RangeNames } from '../../services/firestore';
 import './StatusForm.css';
 
@@ -8,43 +9,48 @@ interface StatusFormProps {
   loading?: boolean;
 }
 
+interface StatusFormInputs {
+  name: string;
+  normalThreshold: string;
+  elevatedThreshold: string;
+  highThreshold: string;
+  rangeNames: RangeNames;
+}
+
 const StatusForm: React.FC<StatusFormProps> = ({ onSubmit, onCancel, loading }) => {
-  const [name, setName] = useState('');
-  const [normalThreshold, setNormalThreshold] = useState('');
-  const [elevatedThreshold, setElevatedThreshold] = useState('');
-  const [highThreshold, setHighThreshold] = useState('');
-  const [rangeNames, setRangeNames] = useState<RangeNames>({
-    normal: 'Normal',
-    elevated: 'Elevated',
-    high: 'High'
+  const { 
+    control, 
+    register, 
+    handleSubmit, 
+    formState: { errors }, 
+    setError,
+    clearErrors 
+  } = useForm<StatusFormInputs>({
+    defaultValues: {
+      name: '',
+      normalThreshold: '',
+      elevatedThreshold: '',
+      highThreshold: '',
+      rangeNames: {
+        normal: 'Normal',
+        elevated: 'Elevated',
+        high: 'High'
+      }
+    }
   });
-  const [error, setError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
+  const onFormSubmit = async (data: StatusFormInputs) => {
+    clearErrors();
 
-    if (!name.trim()) {
-      setError('Please enter a status name');
-      return;
-    }
-
-    if (!rangeNames.normal.trim() || !rangeNames.elevated.trim() || !rangeNames.high.trim()) {
-      setError('Please enter names for all ranges');
-      return;
-    }
-
-    const normal = parseFloat(normalThreshold);
-    const elevated = parseFloat(elevatedThreshold);
-    const high = parseFloat(highThreshold);
-
-    if (isNaN(normal) || isNaN(elevated) || isNaN(high)) {
-      setError('Please enter valid numbers for all thresholds');
-      return;
-    }
+    const normal = parseFloat(data.normalThreshold);
+    const elevated = parseFloat(data.elevatedThreshold);
+    const high = parseFloat(data.highThreshold);
 
     if (normal >= elevated || elevated >= high) {
-      setError('Thresholds must be in ascending order: First < Second < Third');
+      setError('root', {
+        type: 'manual',
+        message: 'Thresholds must be in ascending order: First < Second < Third'
+      });
       return;
     }
 
@@ -52,66 +58,91 @@ const StatusForm: React.FC<StatusFormProps> = ({ onSubmit, onCancel, loading }) 
       normal,
       elevated,
       high,
-      ranges: rangeNames
+      ranges: data.rangeNames
     };
 
     try {
-      await onSubmit(name, thresholds);
+      await onSubmit(data.name, thresholds);
     } catch (err) {
-      setError('Failed to create status');
+      setError('root', {
+        type: 'manual',
+        message: 'Failed to create status'
+      });
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="status-form">
-      {error && <div className="error-message">{error}</div>}
+    <form onSubmit={handleSubmit(onFormSubmit)} className="status-form">
+      {errors.root && <div className="error-message">{errors.root.message}</div>}
       
       <div className="form-section">
         <h4>Status Name</h4>
         <div className="form-group">
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter status name"
             disabled={loading}
+            placeholder="Enter status name"
+            {...register("name", {
+              required: "Please enter a status name",
+              minLength: {
+                value: 2,
+                message: "Name must be at least 2 characters"
+              }
+            })}
           />
+          {errors.name && <span className="error-message">{errors.name.message}</span>}
         </div>
       </div>
 
       <div className="thresholds-group">
         <div className="form-section">
           <h4>Range Names</h4>
-          <div className="form-group">
-            <label>First Range Name</label>
-            <input
-              type="text"
-              value={rangeNames.normal}
-              onChange={(e) => setRangeNames(prev => ({ ...prev, normal: e.target.value }))}
-              placeholder="e.g., Normal"
-              disabled={loading}
-            />
-          </div>
-          <div className="form-group">
-            <label>Second Range Name</label>
-            <input
-              type="text"
-              value={rangeNames.elevated}
-              onChange={(e) => setRangeNames(prev => ({ ...prev, elevated: e.target.value }))}
-              placeholder="e.g., Elevated"
-              disabled={loading}
-            />
-          </div>
-          <div className="form-group">
-            <label>Third Range Name</label>
-            <input
-              type="text"
-              value={rangeNames.high}
-              onChange={(e) => setRangeNames(prev => ({ ...prev, high: e.target.value }))}
-              placeholder="e.g., High"
-              disabled={loading}
-            />
-          </div>
+          <Controller
+            name="rangeNames"
+            control={control}
+            rules={{
+              validate: (value) => {
+                if (!value.normal.trim() || !value.elevated.trim() || !value.high.trim()) {
+                  return "Please enter names for all ranges";
+                }
+                return true;
+              }
+            }}
+            render={({ field }) => (
+              <>
+                <div className="form-group">
+                  <label>First Range Name</label>
+                  <input
+                    type="text"
+                    value={field.value.normal}
+                    onChange={(e) => field.onChange({ ...field.value, normal: e.target.value })}
+                    placeholder="e.g., Normal"
+                    disabled={loading}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Second Range Name</label>
+                  <input
+                    type="text"
+                    value={field.value.elevated}
+                    onChange={(e) => field.onChange({ ...field.value, elevated: e.target.value })}
+                    placeholder="e.g., Elevated"
+                    disabled={loading}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Third Range Name</label>
+                  <input
+                    type="text"
+                    value={field.value.high}
+                    onChange={(e) => field.onChange({ ...field.value, high: e.target.value })}
+                    placeholder="e.g., High"
+                    disabled={loading}
+                  />
+                </div>
+              </>
+            )}
+          />
         </div>
 
         <div className="form-section">
@@ -121,13 +152,16 @@ const StatusForm: React.FC<StatusFormProps> = ({ onSubmit, onCancel, loading }) 
               <label>First Threshold</label>
               <input
                 type="number"
-                value={normalThreshold}
-                onChange={(e) => setNormalThreshold(e.target.value)}
-                placeholder="Value"
                 step="any"
                 disabled={loading}
+                placeholder="Value"
+                {...register("normalThreshold", {
+                  required: "Please enter a value",
+                  validate: value => !isNaN(parseFloat(value)) || "Please enter a valid number"
+                })}
               />
               <span className="helper-text">Values below this are in first range</span>
+              {errors.normalThreshold && <span className="error-message">{errors.normalThreshold.message}</span>}
             </div>
           </div>
 
@@ -136,13 +170,16 @@ const StatusForm: React.FC<StatusFormProps> = ({ onSubmit, onCancel, loading }) 
               <label>Second Threshold</label>
               <input
                 type="number"
-                value={elevatedThreshold}
-                onChange={(e) => setElevatedThreshold(e.target.value)}
-                placeholder="Value"
                 step="any"
                 disabled={loading}
+                placeholder="Value"
+                {...register("elevatedThreshold", {
+                  required: "Please enter a value",
+                  validate: value => !isNaN(parseFloat(value)) || "Please enter a valid number"
+                })}
               />
               <span className="helper-text">Values between first and this are in second range</span>
+              {errors.elevatedThreshold && <span className="error-message">{errors.elevatedThreshold.message}</span>}
             </div>
           </div>
 
@@ -151,24 +188,27 @@ const StatusForm: React.FC<StatusFormProps> = ({ onSubmit, onCancel, loading }) 
               <label>Third Threshold</label>
               <input
                 type="number"
-                value={highThreshold}
-                onChange={(e) => setHighThreshold(e.target.value)}
-                placeholder="Value"
                 step="any"
                 disabled={loading}
+                placeholder="Value"
+                {...register("highThreshold", {
+                  required: "Please enter a value",
+                  validate: value => !isNaN(parseFloat(value)) || "Please enter a valid number"
+                })}
               />
-              <span className="helper-text">Values above this are in third range</span>
+              <span className="helper-text">Values between second and this are in third range</span>
+              {errors.highThreshold && <span className="error-message">{errors.highThreshold.message}</span>}
             </div>
           </div>
         </div>
       </div>
 
       <div className="form-buttons">
-        <button type="submit" disabled={loading}>
-          {loading ? 'Adding...' : 'Add Status'}
-        </button>
         <button type="button" onClick={onCancel} disabled={loading}>
           Cancel
+        </button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Creating...' : 'Create'}
         </button>
       </div>
     </form>
